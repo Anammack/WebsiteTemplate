@@ -1,0 +1,891 @@
+/* ================================================================
+   style.css — Main Stylesheet
+   Structure:
+     1.  CSS Custom Properties (variables / theme)
+     2.  CSS Reset & Base
+     3.  Typography
+     4.  Utility Classes
+     5.  Layout Helpers (container, grid, section-padding)
+     6.  Buttons
+     7.  Header / Navbar
+     8.  Hero Section
+     9.  Features / Cards
+     10. About (Two-Column)
+     11. Testimonials
+     12. Contact Form
+     13. Footer
+     14. Scroll-to-Top Button
+     15. Animations & Transitions
+     16. Media Queries (responsive breakpoints)
+================================================================ */
+
+
+/* ----------------------------------------------------------------
+   1. CSS CUSTOM PROPERTIES
+   — Edit these to retheme the entire site instantly.
+---------------------------------------------------------------- */
+:root {
+  /* Brand colours */
+  --color-primary:        #4f46e5;   /* main accent (indigo) */
+  --color-primary-dark:   #4338ca;   /* hover state */
+  --color-primary-light:  #e0e7ff;   /* tinted backgrounds */
+  --color-accent:         #f59e0b;   /* secondary highlight (amber) */
+
+  /* Neutrals */
+  --color-bg:             #ffffff;
+  --color-bg-subtle:      #f8fafc;   /* light section backgrounds */
+  --color-text:           #1e293b;   /* body text */
+  --color-text-muted:     #64748b;   /* secondary text */
+  --color-border:         #e2e8f0;   /* borders & dividers */
+
+  /* Status colours */
+  --color-success:        #16a34a;
+  --color-error:          #dc2626;
+
+  /* Typography */
+  --font-sans:   'Inter', system-ui, sans-serif;
+  --font-serif:  'Playfair Display', Georgia, serif;
+  --font-size-base: 1rem;          /* 16px */
+  --line-height-base: 1.6;
+
+  /* Spacing scale */
+  --space-xs:   0.25rem;   /*  4px */
+  --space-sm:   0.5rem;    /*  8px */
+  --space-md:   1rem;      /* 16px */
+  --space-lg:   1.5rem;    /* 24px */
+  --space-xl:   2rem;      /* 32px */
+  --space-2xl:  3rem;      /* 48px */
+  --space-3xl:  5rem;      /* 80px */
+
+  /* Layout */
+  --container-max:  1200px;
+  --container-pad:  1.5rem;
+
+  /* Borders */
+  --radius-sm:  0.25rem;
+  --radius-md:  0.5rem;
+  --radius-lg:  1rem;
+  --radius-full: 9999px;
+
+  /* Shadows */
+  --shadow-sm:  0 1px 3px rgba(0,0,0,.08);
+  --shadow-md:  0 4px 12px rgba(0,0,0,.10);
+  --shadow-lg:  0 10px 30px rgba(0,0,0,.12);
+
+  /* Transitions */
+  --transition: 0.25s ease;
+
+  /* Navbar */
+  --nav-height: 70px;
+}
+
+
+/* ----------------------------------------------------------------
+   2. CSS RESET & BASE
+---------------------------------------------------------------- */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: var(--font-size-base);
+  /* Offset anchor links so header doesn't overlap */
+  scroll-padding-top: var(--nav-height);
+}
+
+body {
+  font-family: var(--font-sans);
+  color: var(--color-text);
+  background-color: var(--color-bg);
+  line-height: var(--line-height-base);
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+img, video, svg {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+ul, ol {
+  list-style: none;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  transition: color var(--transition);
+}
+
+a:hover {
+  color: var(--color-primary);
+}
+
+button {
+  cursor: pointer;
+  font-family: inherit;
+  border: none;
+  background: none;
+}
+
+input, textarea, select {
+  font-family: inherit;
+  font-size: 1rem;
+}
+
+/* Remove default focus ring; add a custom one */
+:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 3px;
+  border-radius: var(--radius-sm);
+}
+
+
+/* ----------------------------------------------------------------
+   3. TYPOGRAPHY
+---------------------------------------------------------------- */
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 700;
+  line-height: 1.2;
+  color: var(--color-text);
+}
+
+h1 { font-size: clamp(2rem, 5vw, 3.5rem); }
+h2 { font-size: clamp(1.6rem, 4vw, 2.5rem); }
+h3 { font-size: clamp(1.2rem, 3vw, 1.5rem); }
+h4 { font-size: 1.125rem; }
+
+p {
+  max-width: 65ch; /* comfortable reading width */
+  color: var(--color-text-muted);
+}
+
+/* Accent / highlight span inside headings */
+.text-accent {
+  color: var(--color-primary);
+}
+
+
+/* ----------------------------------------------------------------
+   4. UTILITY CLASSES
+   — Small reusable helpers
+---------------------------------------------------------------- */
+
+/* Text alignment */
+.text-center { text-align: center; }
+.text-left   { text-align: left; }
+.text-right  { text-align: right; }
+
+/* Spacing */
+.mt-auto  { margin-top: auto; }
+.mb-0     { margin-bottom: 0; }
+
+/* Display */
+.visually-hidden {
+  position: absolute;
+  width: 1px; height: 1px;
+  margin: -1px; padding: 0;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Background helpers */
+.bg-subtle { background-color: var(--color-bg-subtle); }
+
+/* Eyebrow label above headings */
+.eyebrow {
+  display: inline-block;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-primary);
+  margin-bottom: var(--space-sm);
+}
+
+
+/* ----------------------------------------------------------------
+   5. LAYOUT HELPERS
+---------------------------------------------------------------- */
+
+/* Centered max-width wrapper */
+.container {
+  width: 100%;
+  max-width: var(--container-max);
+  margin-inline: auto;
+  padding-inline: var(--container-pad);
+}
+
+/* Consistent vertical section padding */
+.section-padding {
+  padding-block: var(--space-3xl);
+}
+
+/* Section header (title + subtitle centred above content) */
+.section-header {
+  text-align: center;
+  margin-bottom: var(--space-2xl);
+}
+
+.section-title {
+  margin-bottom: var(--space-sm);
+}
+
+.section-subtitle {
+  font-size: 1.125rem;
+  margin-inline: auto;
+}
+
+
+/* ----------------------------------------------------------------
+   6. BUTTONS
+---------------------------------------------------------------- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-sm);
+  padding: 0.75rem 1.75rem;
+  border-radius: var(--radius-full);
+  font-weight: 600;
+  font-size: 0.95rem;
+  white-space: nowrap;
+  transition: background-color var(--transition),
+              color            var(--transition),
+              border-color     var(--transition),
+              box-shadow       var(--transition),
+              transform        var(--transition);
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.btn:active {
+  transform: translateY(0);
+}
+
+/* Primary filled button */
+.btn-primary {
+  background-color: var(--color-primary);
+  color: #fff;
+}
+
+.btn-primary:hover {
+  background-color: var(--color-primary-dark);
+  color: #fff;
+}
+
+/* Outlined / ghost button */
+.btn-outline {
+  background-color: transparent;
+  color: var(--color-primary);
+  border: 2px solid var(--color-primary);
+}
+
+.btn-outline:hover {
+  background-color: var(--color-primary);
+  color: #fff;
+}
+
+/* Full-width button (inside form) */
+.btn-full {
+  width: 100%;
+}
+
+
+/* ----------------------------------------------------------------
+   7. HEADER / NAVBAR
+---------------------------------------------------------------- */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  height: var(--nav-height);
+  background-color: var(--color-bg);
+  border-bottom: 1px solid var(--color-border);
+  /* Shadow added via JS when scrolled */
+  transition: box-shadow var(--transition);
+}
+
+/* Shadow class toggled by JS on scroll */
+.site-header.scrolled {
+  box-shadow: var(--shadow-md);
+}
+
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 100%;
+}
+
+/* Brand / Logo */
+.nav-logo {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--color-primary);
+  letter-spacing: -0.02em;
+}
+
+.nav-logo:hover {
+  color: var(--color-primary-dark);
+}
+
+/* Nav links list */
+.nav-menu {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xl);
+}
+
+.nav-link {
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--color-text);
+  position: relative;
+}
+
+/* Underline animation on nav links */
+.nav-link:not(.btn)::after {
+  content: '';
+  position: absolute;
+  bottom: -4px; left: 0;
+  width: 0; height: 2px;
+  background-color: var(--color-primary);
+  border-radius: var(--radius-full);
+  transition: width var(--transition);
+}
+
+.nav-link:not(.btn):hover::after,
+.nav-link:not(.btn).active::after {
+  width: 100%;
+}
+
+/* Hamburger toggle button (hidden on desktop) */
+.nav-toggle {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  padding: var(--space-sm);
+  z-index: 110;
+}
+
+.hamburger {
+  display: block;
+  width: 24px; height: 2px;
+  background-color: var(--color-text);
+  border-radius: var(--radius-full);
+  transition: transform var(--transition), opacity var(--transition);
+}
+
+/* Hamburger → X when menu is open */
+.nav-toggle[aria-expanded="true"] .hamburger:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+.nav-toggle[aria-expanded="true"] .hamburger:nth-child(2) {
+  opacity: 0;
+}
+.nav-toggle[aria-expanded="true"] .hamburger:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+
+/* ----------------------------------------------------------------
+   8. HERO SECTION
+---------------------------------------------------------------- */
+.hero {
+  min-height: calc(100vh - var(--nav-height));
+  display: flex;
+  align-items: center;
+  padding-block: var(--space-3xl);
+  background: linear-gradient(135deg, var(--color-bg) 60%, var(--color-primary-light) 100%);
+}
+
+.hero-inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-3xl);
+  align-items: center;
+}
+
+.hero-text {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
+}
+
+.hero-title {
+  font-family: var(--font-serif);
+}
+
+.hero-subtitle {
+  font-size: 1.15rem;
+  max-width: 50ch;
+}
+
+.hero-actions {
+  display: flex;
+  gap: var(--space-md);
+  flex-wrap: wrap;
+}
+
+.hero-image {
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-lg);
+}
+
+.hero-image img {
+  width: 100%;
+  /* Placeholder background until real image is added */
+  min-height: 380px;
+  object-fit: cover;
+  background-color: var(--color-primary-light);
+}
+
+
+/* ----------------------------------------------------------------
+   9. FEATURES / CARDS
+---------------------------------------------------------------- */
+.cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: var(--space-xl);
+}
+
+.card {
+  background-color: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-xl);
+  transition: transform var(--transition), box-shadow var(--transition);
+}
+
+.card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-lg);
+}
+
+.card-icon {
+  font-size: 2rem;
+  margin-bottom: var(--space-md);
+}
+
+.card-title {
+  margin-bottom: var(--space-sm);
+  color: var(--color-text);
+}
+
+.card-text {
+  font-size: 0.95rem;
+  max-width: none;
+}
+
+
+/* ----------------------------------------------------------------
+   10. ABOUT — TWO-COLUMN LAYOUT
+---------------------------------------------------------------- */
+.two-col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-3xl);
+  align-items: center;
+}
+
+.two-col-text {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+.two-col-text .section-title {
+  text-align: left;
+}
+
+.two-col-image {
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-lg);
+}
+
+.two-col-image img {
+  width: 100%;
+  min-height: 360px;
+  object-fit: cover;
+  background-color: var(--color-primary-light);
+}
+
+
+/* ----------------------------------------------------------------
+   11. TESTIMONIALS
+---------------------------------------------------------------- */
+.testimonials-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: var(--space-xl);
+}
+
+.testimonial {
+  background-color: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-left: 4px solid var(--color-primary);
+  border-radius: var(--radius-md);
+  padding: var(--space-xl);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+.testimonial-text {
+  font-style: italic;
+  color: var(--color-text);
+  max-width: none;
+}
+
+.testimonial-author {
+  font-size: 0.9rem;
+  color: var(--color-text-muted);
+}
+
+
+/* ----------------------------------------------------------------
+   12. CONTACT FORM
+---------------------------------------------------------------- */
+.contact-inner {
+  max-width: 680px; /* narrow the form column */
+}
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
+  margin-top: var(--space-xl);
+}
+
+/* Side-by-side first name / last name fields */
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-lg);
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+}
+
+.form-group label {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+.form-group label span {
+  color: var(--color-error);
+}
+
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  transition: border-color var(--transition), box-shadow var(--transition);
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.15);
+}
+
+/* Validation error state */
+.form-group input.is-invalid,
+.form-group textarea.is-invalid {
+  border-color: var(--color-error);
+}
+
+.field-error {
+  font-size: 0.8rem;
+  color: var(--color-error);
+  min-height: 1rem; /* reserves space so layout doesn't jump */
+}
+
+/* Form status banner (success/error) shown after submit */
+.form-status {
+  padding: var(--space-md) var(--space-lg);
+  border-radius: var(--radius-md);
+  font-weight: 500;
+  text-align: center;
+  display: none; /* shown by JS */
+}
+
+.form-status.success {
+  background-color: #dcfce7;
+  color: var(--color-success);
+  display: block;
+}
+
+.form-status.error {
+  background-color: #fee2e2;
+  color: var(--color-error);
+  display: block;
+}
+
+
+/* ----------------------------------------------------------------
+   13. FOOTER
+---------------------------------------------------------------- */
+.site-footer {
+  background-color: var(--color-text);
+  color: #cbd5e1;
+  padding-top: var(--space-3xl);
+}
+
+.site-footer a {
+  color: #94a3b8;
+}
+
+.site-footer a:hover {
+  color: #fff;
+}
+
+.footer-inner {
+  display: grid;
+  grid-template-columns: 2fr repeat(3, 1fr);
+  gap: var(--space-2xl);
+  padding-bottom: var(--space-2xl);
+  border-bottom: 1px solid rgba(255,255,255,.08);
+}
+
+.footer-brand .nav-logo {
+  color: #fff;
+  display: inline-block;
+  margin-bottom: var(--space-md);
+}
+
+.footer-brand p {
+  color: #94a3b8;
+  font-size: 0.95rem;
+  max-width: 28ch;
+}
+
+.footer-col h4 {
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #fff;
+  margin-bottom: var(--space-md);
+}
+
+.footer-col ul {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+
+.footer-col ul li a {
+  font-size: 0.95rem;
+}
+
+/* Bottom bar — copyright + social icons */
+.footer-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-block: var(--space-lg);
+  font-size: 0.875rem;
+  color: #64748b;
+}
+
+.social-links {
+  display: flex;
+  gap: var(--space-md);
+  font-size: 1.2rem;
+}
+
+.social-links a {
+  transition: transform var(--transition);
+}
+
+.social-links a:hover {
+  transform: translateY(-3px);
+}
+
+
+/* ----------------------------------------------------------------
+   14. SCROLL-TO-TOP BUTTON
+---------------------------------------------------------------- */
+.scroll-top {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  width: 44px; height: 44px;
+  background-color: var(--color-primary);
+  color: #fff;
+  border-radius: var(--radius-full);
+  font-size: 1.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: var(--shadow-md);
+  /* Hidden by default; shown via JS */
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(10px);
+  transition: opacity var(--transition), transform var(--transition),
+              background-color var(--transition);
+  z-index: 90;
+}
+
+.scroll-top.visible {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+
+.scroll-top:hover {
+  background-color: var(--color-primary-dark);
+}
+
+
+/* ----------------------------------------------------------------
+   15. ANIMATIONS & TRANSITIONS
+   — .fade-in class applied by JS Intersection Observer
+---------------------------------------------------------------- */
+.fade-in {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.55s ease, transform 0.55s ease;
+}
+
+.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+
+/* ----------------------------------------------------------------
+   16. MEDIA QUERIES
+   — Mobile-first breakpoints
+   Breakpoints:
+     sm  — 480px
+     md  — 768px  (tablets)
+     lg  — 1024px (small laptops)
+---------------------------------------------------------------- */
+
+/* ---- Tablet (≤ 1024px) ---- */
+@media (max-width: 1024px) {
+  .footer-inner {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+/* ---- Tablet / Large Mobile (≤ 768px) ---- */
+@media (max-width: 768px) {
+
+  /* Show hamburger, hide nav links */
+  .nav-toggle {
+    display: flex;
+  }
+
+  .nav-menu {
+    position: fixed;
+    top: var(--nav-height);
+    left: 0; right: 0;
+    background-color: var(--color-bg);
+    flex-direction: column;
+    gap: 0;
+    padding: var(--space-lg) 0;
+    border-bottom: 1px solid var(--color-border);
+    box-shadow: var(--shadow-md);
+    /* Hidden off-screen by default */
+    transform: translateY(-110%);
+    transition: transform var(--transition);
+    z-index: 99;
+  }
+
+  /* Menu open state toggled by JS */
+  .nav-menu.open {
+    transform: translateY(0);
+  }
+
+  .nav-menu li {
+    width: 100%;
+    text-align: center;
+  }
+
+  .nav-link {
+    display: block;
+    padding: var(--space-md);
+  }
+
+  /* Stack hero columns */
+  .hero-inner {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .hero-image {
+    order: -1; /* image above text on mobile */
+  }
+
+  .hero-actions {
+    justify-content: center;
+  }
+
+  .hero-subtitle {
+    margin-inline: auto;
+  }
+
+  /* Stack two-column sections */
+  .two-col {
+    grid-template-columns: 1fr;
+  }
+
+  /* Stack form row */
+  .form-row {
+    grid-template-columns: 1fr;
+  }
+
+  /* Stack footer */
+  .footer-inner {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ---- Small Mobile (≤ 480px) ---- */
+@media (max-width: 480px) {
+  :root {
+    --space-3xl: 3rem;
+    --container-pad: 1rem;
+  }
+
+  .hero-actions {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .btn {
+    width: 100%;
+  }
+
+  .footer-bottom {
+    flex-direction: column;
+    gap: var(--space-md);
+    text-align: center;
+  }
+}

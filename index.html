@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- ============================================================
+         META TAGS
+    ============================================================ -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Page description goes here." />
+    <meta name="author" content="Your Name" />
+
+    <!-- ============================================================
+         PAGE TITLE — Change this per page
+    ============================================================ -->
+    <title>Site Name | Page Title</title>
+
+    <!-- ============================================================
+         FAVICON — Replace with your own icon in /assets/images/
+    ============================================================ -->
+    <link rel="icon" type="image/png" href="assets/images/favicon.png" />
+
+    <!-- ============================================================
+         GOOGLE FONTS — Swap font names as needed
+         https://fonts.google.com
+    ============================================================ -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- ============================================================
+         EXTERNAL CSS — Main stylesheet
+    ============================================================ -->
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+
+  <body>
+
+    <!-- ============================================================
+         HEADER / NAVIGATION
+    ============================================================ -->
+    <header class="site-header" id="site-header">
+      <nav class="navbar container">
+
+        <!-- Logo / Brand -->
+        <a href="index.html" class="nav-logo">YourBrand</a>
+
+        <!-- Hamburger button (mobile) -->
+        <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation" aria-expanded="false">
+          <span class="hamburger"></span>
+          <span class="hamburger"></span>
+          <span class="hamburger"></span>
+        </button>
+
+        <!-- Navigation links — update href and labels -->
+        <ul class="nav-menu" id="navMenu">
+          <li><a href="#hero"     class="nav-link">Home</a></li>
+          <li><a href="#features" class="nav-link">Features</a></li>
+          <li><a href="#about"    class="nav-link">About</a></li>
+          <li><a href="#contact"  class="nav-link">Contact</a></li>
+          <!-- CTA button in nav -->
+          <li><a href="#contact" class="nav-link btn btn-primary">Get Started</a></li>
+        </ul>
+
+      </nav>
+    </header>
+    <!-- END HEADER -->
+
+
+    <!-- ============================================================
+         MAIN CONTENT
+    ============================================================ -->
+    <main id="main-content">
+
+      <!-- ----------------------------------------------------------
+           HERO SECTION
+      ---------------------------------------------------------- -->
+      <section class="hero" id="hero">
+        <div class="container hero-inner">
+
+          <div class="hero-text">
+            <!-- Main headline -->
+            <h1 class="hero-title">
+              Build Something <span class="text-accent">Amazing</span>
+            </h1>
+            <!-- Sub-headline -->
+            <p class="hero-subtitle">
+              A clean, responsive starter template ready for any project.
+              Swap in your content and go live fast.
+            </p>
+            <!-- CTA buttons -->
+            <div class="hero-actions">
+              <a href="#features" class="btn btn-primary">Explore Features</a>
+              <a href="#about"    class="btn btn-outline">Learn More</a>
+            </div>
+          </div>
+
+          <!-- Hero image — replace src with your own -->
+          <div class="hero-image">
+            <img
+              src="assets/images/hero-placeholder.png"
+              alt="Hero illustration"
+              loading="lazy"
+            />
+          </div>
+
+        </div>
+      </section>
+      <!-- END HERO -->
+
+
+      <!-- ----------------------------------------------------------
+           FEATURES / CARDS SECTION
+      ---------------------------------------------------------- -->
+      <section class="features section-padding" id="features">
+        <div class="container">
+
+          <div class="section-header">
+            <h2 class="section-title">Why Choose Us</h2>
+            <p class="section-subtitle">
+              Everything you need, nothing you don't.
+            </p>
+          </div>
+
+          <!-- Feature cards grid — duplicate .card blocks as needed -->
+          <div class="cards-grid">
+
+            <div class="card">
+              <!-- Replace emoji with an <img> or SVG icon -->
+              <div class="card-icon">⚡</div>
+              <h3 class="card-title">Lightning Fast</h3>
+              <p class="card-text">
+                Optimised assets and minimal dependencies keep load times low.
+              </p>
+            </div>
+
+            <div class="card">
+              <div class="card-icon">📱</div>
+              <h3 class="card-title">Fully Responsive</h3>
+              <p class="card-text">
+                Looks great on every screen — mobile, tablet, and desktop.
+              </p>
+            </div>
+
+            <div class="card">
+              <div class="card-icon">🎨</div>
+              <h3 class="card-title">Easy to Customise</h3>
+              <p class="card-text">
+                CSS custom properties let you retheme the whole site in minutes.
+              </p>
+            </div>
+
+            <div class="card">
+              <div class="card-icon">♿</div>
+              <h3 class="card-title">Accessible</h3>
+              <p class="card-text">
+                Semantic HTML and ARIA attributes baked in from the start.
+              </p>
+            </div>
+
+          </div>
+          <!-- END cards-grid -->
+
+        </div>
+      </section>
+      <!-- END FEATURES -->
+
+
+      <!-- ----------------------------------------------------------
+           ABOUT / TWO-COLUMN SECTION
+      ---------------------------------------------------------- -->
+      <section class="about section-padding bg-subtle" id="about">
+        <div class="container two-col">
+
+          <!-- Text column -->
+          <div class="two-col-text">
+            <span class="eyebrow">About Us</span>
+            <h2 class="section-title">A Little Bit About What We Do</h2>
+            <p>
+              Replace this paragraph with your own story, mission statement,
+              or any relevant information about your product or service.
+            </p>
+            <p>
+              Add as many paragraphs as you need. The layout will stay clean
+              and balanced thanks to CSS Grid.
+            </p>
+            <a href="#contact" class="btn btn-primary">Get In Touch</a>
+          </div>
+
+          <!-- Image column — replace src -->
+          <div class="two-col-image">
+            <img
+              src="assets/images/about-placeholder.png"
+              alt="About illustration"
+              loading="lazy"
+            />
+          </div>
+
+        </div>
+      </section>
+      <!-- END ABOUT -->
+
+
+      <!-- ----------------------------------------------------------
+           TESTIMONIALS / QUOTES SECTION
+      ---------------------------------------------------------- -->
+      <section class="testimonials section-padding" id="testimonials">
+        <div class="container">
+
+          <div class="section-header">
+            <h2 class="section-title">What People Say</h2>
+          </div>
+
+          <!-- Duplicate .testimonial blocks as needed -->
+          <div class="testimonials-grid">
+
+            <blockquote class="testimonial">
+              <p class="testimonial-text">
+                "This template saved me hours of setup time. Highly recommend
+                it to any developer starting a new project."
+              </p>
+              <footer class="testimonial-author">
+                <strong>Jane Doe</strong> — Founder, Acme Corp
+              </footer>
+            </blockquote>
+
+            <blockquote class="testimonial">
+              <p class="testimonial-text">
+                "Clean code, thoughtful comments, and a design that actually
+                looks professional right out of the box."
+              </p>
+              <footer class="testimonial-author">
+                <strong>John Smith</strong> — Lead Developer, StartupXYZ
+              </footer>
+            </blockquote>
+
+            <blockquote class="testimonial">
+              <p class="testimonial-text">
+                "I love how easy it is to customise the colours and fonts.
+                Makes every project feel unique."
+              </p>
+              <footer class="testimonial-author">
+                <strong>Maria Garcia</strong> — Designer, Studio M
+              </footer>
+            </blockquote>
+
+          </div>
+
+        </div>
+      </section>
+      <!-- END TESTIMONIALS -->
+
+
+      <!-- ----------------------------------------------------------
+           CONTACT SECTION
+      ---------------------------------------------------------- -->
+      <section class="contact section-padding bg-subtle" id="contact">
+        <div class="container contact-inner">
+
+          <div class="section-header">
+            <h2 class="section-title">Get In Touch</h2>
+            <p class="section-subtitle">
+              Fill out the form and we'll get back to you within 24 hours.
+            </p>
+          </div>
+
+          <!-- Contact form — hook up action/backend as needed -->
+          <form class="contact-form" id="contactForm" novalidate>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="firstName">First Name <span aria-hidden="true">*</span></label>
+                <input
+                  type="text"
+                  id="firstName"
+                  name="firstName"
+                  placeholder="Jane"
+                  required
+                  autocomplete="given-name"
+                />
+                <!-- Validation message placeholder -->
+                <span class="field-error" id="firstNameError"></span>
+              </div>
+
+              <div class="form-group">
+                <label for="lastName">Last Name <span aria-hidden="true">*</span></label>
+                <input
+                  type="text"
+                  id="lastName"
+                  name="lastName"
+                  placeholder="Doe"
+                  required
+                  autocomplete="family-name"
+                />
+                <span class="field-error" id="lastNameError"></span>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="email">Email Address <span aria-hidden="true">*</span></label>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                placeholder="jane@example.com"
+                required
+                autocomplete="email"
+              />
+              <span class="field-error" id="emailError"></span>
+            </div>
+
+            <div class="form-group">
+              <label for="message">Message <span aria-hidden="true">*</span></label>
+              <textarea
+                id="message"
+                name="message"
+                rows="5"
+                placeholder="Tell us about your project…"
+                required
+              ></textarea>
+              <span class="field-error" id="messageError"></span>
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-full">Send Message</button>
+
+            <!-- Success / error banner shown via JS -->
+            <div class="form-status" id="formStatus" role="alert" aria-live="polite"></div>
+
+          </form>
+
+        </div>
+      </section>
+      <!-- END CONTACT -->
+
+    </main>
+    <!-- END MAIN CONTENT -->
+
+
+    <!-- ============================================================
+         FOOTER
+    ============================================================ -->
+    <footer class="site-footer">
+      <div class="container footer-inner">
+
+        <!-- Footer brand / tagline -->
+        <div class="footer-brand">
+          <a href="index.html" class="nav-logo">YourBrand</a>
+          <p>Making the web a better place, one site at a time.</p>
+        </div>
+
+        <!-- Footer navigation columns — add/remove columns as needed -->
+        <nav class="footer-nav" aria-label="Footer navigation">
+
+          <div class="footer-col">
+            <h4>Product</h4>
+            <ul>
+              <li><a href="#">Features</a></li>
+              <li><a href="#">Pricing</a></li>
+              <li><a href="#">Changelog</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-col">
+            <h4>Company</h4>
+            <ul>
+              <li><a href="#">About</a></li>
+              <li><a href="#">Blog</a></li>
+              <li><a href="#">Careers</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-col">
+            <h4>Legal</h4>
+            <ul>
+              <li><a href="#">Privacy Policy</a></li>
+              <li><a href="#">Terms of Service</a></li>
+              <li><a href="#">Cookie Policy</a></li>
+            </ul>
+          </div>
+
+        </nav>
+
+      </div>
+
+      <!-- Bottom bar -->
+      <div class="footer-bottom container">
+        <!-- Update year dynamically via JS or manually -->
+        <p id="footerYear">&copy; 2026 YourBrand. All rights reserved.</p>
+        <div class="social-links">
+          <!-- Replace # with your actual profile URLs -->
+          <a href="#" aria-label="Twitter">🐦</a>
+          <a href="#" aria-label="GitHub">🐙</a>
+          <a href="#" aria-label="LinkedIn">💼</a>
+        </div>
+      </div>
+
+    </footer>
+    <!-- END FOOTER -->
+
+
+    <!-- ============================================================
+         SCROLL-TO-TOP BUTTON — Visibility toggled via JS
+    ============================================================ -->
+    <button class="scroll-top" id="scrollTop" aria-label="Scroll to top" title="Back to top">
+      ↑
+    </button>
+
+
+    <!-- ============================================================
+         JAVASCRIPT — Load at end of body for performance
+    ============================================================ -->
+    <script src="js/main.js"></script>
+
+  </body>
+</html>
