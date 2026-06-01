@@ -1,3 +1,7 @@
+# Useage
+
+This is up for anyone to use. This is one of the templates I use when developing sites for clients. Simple copy and paste into your IDE. There are comments throughout that will help if you are a beginner!
+
 # WebTemplate
 
 A clean, fully-commented website starter template. Copy-paste it whenever you start a new project.
